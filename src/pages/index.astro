@@ -1,15 +1,46 @@
 ---
+import Main from "../layouts/Main.astro";
+
+const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Main>
+	<style>
+		.profile {
+			display: flex;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			padding: 1rem 0 3rem 0;
+		}
+
+		.profile__details {
+			flex: 1 0 300px;
+		}
+
+		.profile__details > h1 {
+			margin-top: 0;
+		}
+
+		.profile__picture {
+			border-radius: 50%;
+			margin: 0 2rem 1rem 0;
+		}
+	</style>
+	<div class="profile">
+		<img
+			src={profilePicture}
+			alt="Cassie Lin"
+			width="100px"
+			height="100px"
+			class="profile__picture"
+		/>
+		<div class="profile__details">
+			<h1>Cassie Lin</h1>
+			<h2>Frontend Developer at Ionex</h2>
+			<p>
+				As a self-taught developer, I thrive on collaborating with teams
+				to explore innovative solutions.
+			</p>
+		</div>
+	</div>
+</Main>
