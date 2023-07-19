@@ -34,7 +34,7 @@
     }
 </style>
 
-<button aria-label="Theme toggler">
+<button aria-label="Theme toggler" data-theme-toggle>
     <svg width="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
             class="sun"
@@ -57,7 +57,7 @@
     const DARK_MODE = 'DARK';
     
     // Active the mode toggle button
-    const toggleBtn = document.querySelector('button');
+    const toggleBtn = document.querySelector("[data-theme-toggle]");
     const rootEl = document.documentElement;
 
     if (toggleBtn) {
