@@ -1,46 +1,57 @@
 ---
 import Main from "../layouts/Main.astro";
+import Cards from "../components/Cards.astro";
 
 const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
 ---
 
 <Main title="Cassie Lin">
-	<style>
-		.profile {
-			display: flex;
-			align-items: flex-start;
-			flex-wrap: wrap;
-			padding: 1rem 0 3rem 0;
-		}
+  <style>
+    .profile {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 1rem 0 3rem 0;
+    }
 
-		.profile__details {
-			flex: 1 0 300px;
-		}
+    .profile__details {
+      flex: 1 0 300px;
+    }
 
-		.profile__details > h1 {
-			margin-top: 0;
-		}
+    .profile__details > h1 {
+      margin-top: 0;
+    }
 
-		.profile__picture {
-			border-radius: 50%;
-			margin: 0 2rem 1rem 0;
-		}
-	</style>
-	<div class="profile">
-		<img
-			src={profilePicture}
-			alt="Cassie Lin"
-			width="100px"
-			height="100px"
-			class="profile__picture"
-		/>
-		<div class="profile__details">
-			<h1>Cassie Lin</h1>
-			<h2>Frontend Developer at Ionex</h2>
-			<p>
-				As a self-taught developer, I thrive on collaborating with teams
-				to explore innovative solutions.
-			</p>
-		</div>
-	</div>
+    .profile__picture {
+      border-radius: 50%;
+      margin: 0 2rem 1rem 0;
+    }
+  </style>
+  <div class="profile">
+    <img
+      src={profilePicture}
+      alt="Cassie Lin"
+      width="100px"
+      height="100px"
+      class="profile__picture"
+    />
+    <div class="profile__details">
+      <h1>Cassie Lin</h1>
+      <h2>Frontend Developer at Ionex</h2>
+      <p>
+        As a self-taught developer, I thrive on collaborating with teams to
+        explore innovative solutions.
+      </p>
+    </div>
+  </div>
+  <Cards
+    cards={[
+      {
+        title: "What I do beyond technology",
+        gradientFrom: "#6ee7b7",
+        gradientTo: "#9333ea",
+        to: "/beyond-technology",
+      },
+    ]}
+  />
 </Main>
