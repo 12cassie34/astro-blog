@@ -5,8 +5,7 @@ title: "Beyond Technology"
 subtitle: "Humans are multi-faceted. Beyond tech, I indulge in the following:"
 ---
 
-- 5X Marathoner
-- Olympic gold medalist
-- Fashion model
-- Michellin star restaurant owner
-- Adviser to the vice president
+- Book/movie review blogger
+- Ex-editor who helped publish a book that was selected by the largest online book store in Taiwan as  one of the best books of the year.
+- French speaker
+- Perfume candle maker
