@@ -5,11 +5,12 @@ import Main from "./Main.astro";
 
 type Props = MarkdownLayoutProps<{
   poster: string;
+  caption?: string;
   title: string;
   subtitle: string;
 }>;
 
-const { poster, title, subtitle } = Astro.props.frontmatter;
+const { poster, title, subtitle, caption } = Astro.props.frontmatter;
 ---
 
 <style>
@@ -28,6 +29,7 @@ const { poster, title, subtitle } = Astro.props.frontmatter;
 
   .figure__caption {
     font-size: 0.9rem;
+    text-align: center;
   }
 </style>
 
@@ -41,7 +43,7 @@ const { poster, title, subtitle } = Astro.props.frontmatter;
       class="figure__image"
     />
     <figcaption class="figure__caption">
-      Poster image for {title.toLowerCase()}
+      {caption ? caption : `Poster image for ${title.toLowerCase()}`}
     </figcaption>
   </figure>
   <h1>{title}</h1>
