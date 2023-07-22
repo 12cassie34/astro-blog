@@ -5,11 +5,15 @@ import Cards from "../components/Cards.astro";
 const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
 
 // TODO: uncomment this once have some blog posts
-// const blogPosts = await Astro.glob<{
-// 	poster?: string;
-// 	title: string;
-// 	subtitle: string;
-// }>("../pages/blogs/*.md");
+
+type ArticleSummary = {
+  poster?: string;
+  title: string;
+  subtitle: string;
+};
+const learningDiaries = await Astro.glob<ArticleSummary>(
+  "../pages/learning-diary/*.md"
+);
 ---
 
 <Main title="Cassie Lin">
@@ -104,19 +108,18 @@ const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
       },
     ]}
   />
-  <!-- TODO: uncomment this once have some blog posts -->
-  <!-- <ul>
+  <h2>Learning Diary</h2>
+  <ul>
     {
-       blogPosts.map(({ url, frontmatter }) => (
+      learningDiaries.map(({ url, frontmatter }) => (
         <li class="blogs__list">
-			<h4>
-				<a href={url} class="blog__link">
-            {frontmatter.title}
-          </a>
-				</h4>
-          
+          <h4>
+            <a href={url} class="blog__link">
+              {frontmatter.title}
+            </a>
+          </h4>
         </li>
       ))
     }
-  </ul> -->
+  </ul>
 </Main>
