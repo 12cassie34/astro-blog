@@ -3,6 +3,13 @@ import Main from "../layouts/Main.astro";
 import Cards from "../components/Cards.astro";
 
 const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
+
+// TODO: uncomment this once have some blog posts
+// const blogPosts = await Astro.glob<{
+// 	poster?: string;
+// 	title: string;
+// 	subtitle: string;
+// }>("../pages/blogs/*.md");
 ---
 
 <Main title="Cassie Lin">
@@ -25,6 +32,43 @@ const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
     .profile__picture {
       border-radius: 50%;
       margin: 0 2rem 1rem 0;
+    }
+
+    .featured-blogs {
+      margin: 0;
+      padding: 3rem 0 0 0;
+    }
+    .featured-blogs__title {
+      font-size: 2rem;
+      color: var(--gray-900);
+    }
+
+    .featured-blogs__description {
+      margin-top: -1.2rem;
+    }
+
+    .blogs {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .blogs__list {
+      border-bottom: 1px solid;
+      border-color: var(--gray-200);
+    }
+
+    .blog__link {
+      opacity: 1;
+      height: 100%;
+      display: block;
+      padding: 1rem 0;
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .blog__link:hover {
+      opacity: 0.7;
     }
   </style>
   <div class="profile">
@@ -60,4 +104,19 @@ const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
       },
     ]}
   />
+  <!-- TODO: uncomment this once have some blog posts -->
+  <!-- <ul>
+    {
+       blogPosts.map(({ url, frontmatter }) => (
+        <li class="blogs__list">
+			<h4>
+				<a href={url} class="blog__link">
+            {frontmatter.title}
+          </a>
+				</h4>
+          
+        </li>
+      ))
+    }
+  </ul> -->
 </Main>
