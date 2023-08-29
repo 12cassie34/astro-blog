@@ -22,10 +22,13 @@ While in the process of development, I gained insights into:
 = Crafting CSS, HTML, and Markdown within an Astro application.
 
 ### Screenshot
-![Index - Dark](https://hackmd.io/_uploads/SkbpGEi63.png)
-![Blog - Dark](https://hackmd.io/_uploads/r1MgX4oph.png)
-![Index - Light](https://hackmd.io/_uploads/HJBZX4jp3.png)
-![Blog - Light](https://hackmd.io/_uploads/S1TMXEoa3.png)
+![Index - Dark](https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_8b5356d51c3440b4baa7026609c4f070.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1693300410&Signature=crvLyY2DcfNTAgQIb2YIo7nmjuQ%3D)
+
+![Blog - Dark](https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_b5351a2d42851cd3a23cf5031ad4686c.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1693300412&Signature=UPo4fmKzdgPfTWgrKGCz9l9PqqQ%3D)
+
+![Index - Light](https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_dda8e30c5513d75873da30592e335eb3.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1693300414&Signature=A%2FzRT75Lqp2PJ5K4zwNn7%2BkTo6s%3D)
+
+![Blog - Light](https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_d525a380a0a07c0e92f747d2b2caa8d3.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1693300417&Signature=Tr0CNIHb80A6LAsEA2kZeVw%2BCis%3D)
 
 
 ## My process
@@ -34,8 +37,7 @@ While in the process of development, I gained insights into:
 - [Astro](https://astro.build/) - JS library
 - Semantic HTML5 markup
 - CSS
-- Markdow
-
+- Markdown
 
 ## Author
 - Medium - [Cassie，來學]](https://medium.com/@cassiecoding)
