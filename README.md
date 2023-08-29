@@ -22,10 +22,10 @@ While in the process of development, I gained insights into:
 = Crafting CSS, HTML, and Markdown within an Astro application.
 
 ### Screenshot
-![](https://hackmd.io/_uploads/SkbpGEi63.png)
-![](https://hackmd.io/_uploads/r1MgX4oph.png)
-![](https://hackmd.io/_uploads/HJBZX4jp3.png)
-![](https://hackmd.io/_uploads/S1TMXEoa3.png)
+![Index - Dark](https://hackmd.io/_uploads/SkbpGEi63.png)
+![Blog - Dark](https://hackmd.io/_uploads/r1MgX4oph.png)
+![Index - Light](https://hackmd.io/_uploads/HJBZX4jp3.png)
+![Blog - Light](https://hackmd.io/_uploads/S1TMXEoa3.png)
 
 
 ## My process
