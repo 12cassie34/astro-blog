@@ -1,10 +1,7 @@
 ---
 import Main from "../layouts/Main.astro";
-import Cards from "../components/Cards.astro";
 
 const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
-
-// TODO: uncomment this once have some blog posts
 
 type ArticleSummary = {
   poster?: string;
@@ -94,22 +91,6 @@ const learningDiaries = await Astro.glob<ArticleSummary>(
       </p>
     </div>
   </div>
-  <Cards
-    cards={[
-      {
-        title: "A summary of my work history",
-        gradientFrom: "#fde68a",
-        gradientTo: "#fca5a5",
-        to: "/work-summary",
-      },
-      {
-        title: "What I do beyond technology",
-        gradientFrom: "#6ee7b7",
-        gradientTo: "#9333ea",
-        to: "/beyond-technology",
-      },
-    ]}
-  />
   <h2>Learning Diary</h2>
   <ul>
     {
