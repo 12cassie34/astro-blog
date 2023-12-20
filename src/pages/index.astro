@@ -1,50 +1,12 @@
 ---
+import { getPosts } from '../utils/post';
+import { MAX_POSTS } from '../utils/const';
+
 import Main from "../layouts/Main.astro";
 
-const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
-
-type ArticleSummary = {
-  poster?: string;
-  title: string;
-  subtitle: string;
-};
-const learningDiaries = await Astro.glob<ArticleSummary>(
-  "../pages/learning-diary/*.md"
-).then((data) => {
-  return data.splice(0, 5).reverse();
-});
+const allPosts = await getPosts(MAX_POSTS);
 ---
 
-<Main title="Cassie Lin">
-  <div class="profile">
-    <img
-      src={profilePicture}
-      alt="Cassie Lin"
-      width="100px"
-      height="100px"
-      class="profile__picture"
-    />
-    <div class="profile__details">
-      <h1>Cassie Lin</h1>
-      <h2>Frontend Developer at Ionex</h2>
-      <p>
-        As a self-taught developer, I thrive on collaborating with teams to
-        explore innovative solutions.
-      </p>
-    </div>
-  </div>
-  <h2>Learning Diary</h2>
-  <ul>
-    {
-      learningDiaries.map(({ url, frontmatter }) => (
-        <li class="blogs__list">
-          <h4>
-            <a href={url} class="blog__link">
-              {frontmatter.title}
-            </a>
-          </h4>
-        </li>
-      ))
-    }
-  </ul>
+<Main title="Cassie's Journal">
+  {JSON.stringify(allPosts)}
 </Main>

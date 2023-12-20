@@ -1,0 +1,33 @@
+---
+import { getCategories, getPosts } from '../../../utils/post';
+
+import Main from '../../../layouts/Main.astro';
+
+export async function getStaticPaths({ paginate }) {
+	const categories = await getCategories();
+	const allPosts = await getPosts();
+
+	return categories.flatMap((category) => {
+		const filteredPosts = allPosts.filter(
+			(post) => post.data.category === category
+		);
+
+		return paginate(filteredPosts, {
+			params: {
+				category
+			},
+			pageSize: 1
+		});
+	});
+}
+const params = Astro.params;
+const { page } = Astro.props
+
+const posts = page.data
+---
+<Main title="Cassie's Blog">
+    hello here
+    {JSON.stringify(posts)}
+    {JSON.stringify(params)}
+</Main>
+
