@@ -3,7 +3,7 @@ import { BLOG_CATEGORIES } from "../utils/types";
 import { isBlogCategories } from "../utils/typeguards";
 
 import "../styles/main.css";
-import titleIcon from "../../public/images/bushes-of-leaves.svg";
+import titleIcon from "/images/bushes-of-leaves.svg";
 
 import Footer from "../components/Footer.astro";
 import NavLinks from "../components/NavLinks.astro";
@@ -37,7 +37,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <main class="max-w-[50%] mx-auto">
+    <main class="max-w-[70%] mx-auto">
       <div class="drawer">
         <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
@@ -100,7 +100,9 @@ const { title } = Astro.props;
               }
             </ul>
           </div>
-          <slot />
+          <div class="p-4">
+            <slot />
+          </div>
         </div>
         <div class="drawer-side">
           <label

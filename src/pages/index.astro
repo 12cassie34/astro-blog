@@ -1,12 +1,56 @@
 ---
-import { getPosts } from '../utils/post';
-import { MAX_POSTS } from '../utils/const';
+import { getPosts } from "../utils/post";
+import { MAX_POSTS } from "../utils/const";
 
+import Card from "../components/Card.astro";
 import Main from "../layouts/Main.astro";
 
 const allPosts = await getPosts(MAX_POSTS);
 ---
 
 <Main title="Cassie's Journal">
-  {JSON.stringify(allPosts)}
+  <div class="prose">
+    <h2>Latest Post</h2>
+  </div>
+  <div class="grid grid-cols-4 gap-4 mt-4">
+    {
+      allPosts[0] && (
+        <div class="col-span-2">
+          <Card
+            title={allPosts[0].data.title}
+            link="hello"
+            poster={allPosts[0].data.poster}
+            subtitle={allPosts[0].data.subtitle}
+          />
+        </div>
+      )
+    }
+    {
+      allPosts[1] && (
+        <div class="col-span-2">
+          <Card
+            title={allPosts[1].data.title}
+            link="hello"
+            poster={allPosts[1].data.poster}
+            subtitle={allPosts[1].data.subtitle}
+          />
+        </div>
+      )
+    }
+  </div>
+  <div class="grid grid-cols-3 gap-8 mt-8">
+    {
+      allPosts.length > 3 &&
+        allPosts.slice(2).map(({ data: { title, poster, subtitle } }) => {
+          return (
+            <Card
+              title={title}
+              link="hello"
+              poster={poster}
+              subtitle={subtitle}
+            />
+          );
+        })
+    }
+  </div>
 </Main>
