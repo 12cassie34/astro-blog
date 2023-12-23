@@ -1,6 +1,6 @@
 ---
 import { BLOG_CATEGORIES } from "../utils/types";
-import { isBlogCategories } from "../utils/typeguards";
+import { isBlogCategories } from "../utils/typeGuards";
 
 import "../styles/main.css";
 import titleIcon from "/images/bushes-of-leaves.svg";
@@ -10,9 +10,10 @@ import NavLinks from "../components/NavLinks.astro";
 
 interface Props {
   title: string;
+  category?: string;
 }
 
-const { title } = Astro.props;
+const { title, category = 'All' } = Astro.props;
 ---
 
 <html lang="en">
@@ -73,7 +74,7 @@ const { title } = Astro.props;
           <div class="p-4 prose max-w-none">
             <div class="flex items-center">
               <img src={titleIcon} alt="Bushes of Leaves" class="w-12 h-12" />
-              <h1 class="mb-0 ml-4">Learning Diary</h1>
+              <h1 class="mb-0 ml-4">{category}</h1>
             </div>
             <ul
               class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box w-full menu-md"
