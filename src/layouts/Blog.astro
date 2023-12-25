@@ -6,50 +6,31 @@ import defaultImg from "/images/cat.jpg";
 import Main from "./Main.astro";
 
 type Props = MarkdownLayoutProps<{
-  poster?: string;
-  caption?: string;
+  poster: string | undefined;
+  caption: string | undefined;
   title: string;
   subtitle: string;
 }>;
 
-const { poster, title, subtitle, caption } = Astro.props.frontmatter;
+const { title, subtitle, caption, poster = defaultImg } = Astro.props.frontmatter;
 ---
 
-<style>
-  h1 + h2 {
-    margin-bottom: 3rem;
-  }
-
-  .figure {
-    margin: 0;
-  }
-
-  .figure__image {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-
-  .figure__caption {
-    font-size: 0.9rem;
-    text-align: center;
-  }
-</style>
-
 <Main title="Cassie Lin | Blog">
-  <figure class="figure">
-    <img
-      src={poster || defaultImg}
-      alt={title}
-      width="100%"
-      height="480px"
-      class="figure__image"
-    />
-    <figcaption class="figure__caption">
-      {caption || title}
-    </figcaption>
-  </figure>
-  <h1>{title}</h1>
-  <h2>{subtitle}</h2>
-
-  <slot />
+  <div class="prose max-w-[100%]">
+    <figure class="m-0 mb-4">
+      <img
+        src={poster || defaultImg}
+        alt={title}
+        width="100%"
+        height="auto"
+        class="max-w-[100%] rounded-lg"
+      />
+      <figcaption class="text-center">
+        {caption || title}
+      </figcaption>
+    </figure>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <slot />
+  </div>
 </Main>

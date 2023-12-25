@@ -1,108 +1,56 @@
 ---
+import { getPosts } from "../utils/post";
+import { MAX_POSTS } from "../utils/const";
+
+import Card from "../components/Card.astro";
 import Main from "../layouts/Main.astro";
 
-const profilePicture = "https://avatars.githubusercontent.com/u/35912741?v=4";
-
-type ArticleSummary = {
-  poster?: string;
-  title: string;
-  subtitle: string;
-};
-const learningDiaries = await Astro.glob<ArticleSummary>(
-  "../pages/learning-diary/*.md"
-).then((data) => {
-  return data.splice(0, 5).reverse();
-});
+const allPosts = await getPosts(MAX_POSTS);
 ---
 
-<Main title="Cassie Lin">
-  <style>
-    .profile {
-      display: flex;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 1rem 0 3rem 0;
-    }
-
-    .profile__details {
-      flex: 1 0 300px;
-    }
-
-    .profile__details > h1 {
-      margin-top: 0;
-    }
-
-    .profile__picture {
-      border-radius: 50%;
-      margin: 0 2rem 1rem 0;
-    }
-
-    .featured-blogs {
-      margin: 0;
-      padding: 3rem 0 0 0;
-    }
-    .featured-blogs__title {
-      font-size: 2rem;
-      color: var(--gray-900);
-    }
-
-    .featured-blogs__description {
-      margin-top: -1.2rem;
-    }
-
-    .blogs {
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    .blogs__list {
-      border-bottom: 1px solid;
-      border-color: var(--gray-200);
-    }
-
-    .blog__link {
-      opacity: 1;
-      height: 100%;
-      display: block;
-      padding: 1rem 0;
-      color: var(--gray-200);
-      text-decoration: none;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    .blog__link:hover {
-      opacity: 0.7;
-    }
-  </style>
-  <div class="profile">
-    <img
-      src={profilePicture}
-      alt="Cassie Lin"
-      width="100px"
-      height="100px"
-      class="profile__picture"
-    />
-    <div class="profile__details">
-      <h1>Cassie Lin</h1>
-      <h2>Frontend Developer at Ionex</h2>
-      <p>
-        As a self-taught developer, I thrive on collaborating with teams to
-        explore innovative solutions.
-      </p>
-    </div>
+<Main title="Cassie's Journal">
+  <div class="prose max-w-[100%]">
+    <h2 class="text-right">Latest Post</h2>
   </div>
-  <h2>Learning Diary</h2>
-  <ul>
+  <div class="grid grid-cols-4 gap-4 mt-4">
     {
-      learningDiaries.map(({ url, frontmatter }) => (
-        <li class="blogs__list">
-          <h4>
-            <a href={url} class="blog__link">
-              {frontmatter.title}
-            </a>
-          </h4>
-        </li>
-      ))
+      allPosts[0] && (
+        <div class="col-span-2">
+          <Card
+            title={allPosts[0].data.title}
+            link="hello"
+            poster={allPosts[0].data.poster}
+            subtitle={allPosts[0].data.subtitle}
+          />
+        </div>
+      )
     }
-  </ul>
+    {
+      allPosts[1] && (
+        <div class="col-span-2">
+          <Card
+            title={allPosts[1].data.title}
+            link="hello"
+            poster={allPosts[1].data.poster}
+            subtitle={allPosts[1].data.subtitle}
+          />
+        </div>
+      )
+    }
+  </div>
+  <div class="grid grid-cols-3 gap-8 mt-8">
+    {
+      allPosts.length > 3 &&
+        allPosts.slice(2).map(({ data: { title, poster, subtitle } }) => {
+          return (
+            <Card
+              title={title}
+              link="hello"
+              poster={poster}
+              subtitle={subtitle}
+            />
+          );
+        })
+    }
+  </div>
 </Main>

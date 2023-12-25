@@ -1,0 +1,50 @@
+---
+import { getCategories, getPosts } from "../../../utils/post";
+import { MAX_POSTS, CATEGORY_MAP } from "../../../utils/const";
+import type { BLOG_CATEGORIES, Post } from "../../../utils/types";
+
+import Main from "../../../layouts/Main.astro";
+import Card from "../../../components/Card.astro";
+
+export const getStaticPaths = async ({ paginate }) => {
+  const categories = await getCategories();
+  const allPosts = await getPosts();
+
+  return categories.flatMap((category) => {
+    const filteredPosts = allPosts.filter(
+      (post) => post.data.category === category
+    );
+
+    return paginate(filteredPosts, {
+      params: {
+        category,
+      },
+      pageSize: MAX_POSTS,
+    });
+  });
+}
+const params = Astro.params;
+const { page } = Astro.props;
+
+const posts = page.data;
+const category: BLOG_CATEGORIES = params.category;
+---
+
+<Main title={`Cassie's Blog | ${CATEGORY_MAP[category]}`} category={CATEGORY_MAP[category]}>
+  <div class="grid grid-cols-3 gap-8">
+    {
+      posts.map((post: { data: Post; slug: string; }) => {
+        const { title, subtitle, poster } = post.data;
+        
+        return (
+          <Card
+            title={title}
+            link={`/post/${post.slug}`}
+            poster={poster}
+            subtitle={subtitle}
+          />
+        );
+      })
+    }
+  </div>
+</Main>

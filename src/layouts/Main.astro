@@ -1,68 +1,124 @@
 ---
+import { BLOG_CATEGORIES } from "../utils/types";
+import { isBlogCategories } from "../utils/typeGuards";
+
 import "../styles/main.css";
+import titleIcon from "/images/bushes-of-leaves.svg";
 
 import Footer from "../components/Footer.astro";
-import NavigationBar from "../components/NavigationBar.astro";
+import NavLinks from "../components/NavLinks.astro";
 
 interface Props {
-    title: string;
+  title: string;
+  category?: string;
 }
 
-const { title } = Astro.props
+const { title, category = 'All' } = Astro.props;
 ---
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-            rel="stylesheet"
-        />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <meta name="description" content="Cassie's Website" />
-        <title>{title}</title>
-        <script is:inline>
-            const DARK_THEME_CLASS = "dark";
-            const COLOUR_MODE_STORAGE_KEY = "BLOG_COLOUR_MODE";
-            const LIGHT_MODE = "LIGHT";
-            const DARK_MODE = "DARK";
-
-            const rootEl = document.documentElement;
-
-            // Initialize the theme colour
-            const getInitialColourMode = () => {
-                const savedColourMode = window.localStorage.getItem(
-                    COLOUR_MODE_STORAGE_KEY
-                );
-
-                if (savedColourMode) return savedColourMode;
-
-                if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-                    return DARK_MODE;
-
-                return LIGHT_MODE;
-            };
-
-            const initlThemeMode = getInitialColourMode();
-            const setInitialThemeMode = (mode) => {
-                if (mode === DARK_MODE) {
-                    rootEl.classList.add(DARK_THEME_CLASS);
-                } else {
-                    rootEl.classList.remove(DARK_THEME_CLASS);
-                }
-            };
-            setInitialThemeMode(initlThemeMode);
-        </script>
-    </head>
-    <body>
-        <main>
-            <NavigationBar />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Cassie's Website" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="max-w-[70%] mx-auto">
+      <div class="drawer">
+        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+          <div class="w-full navbar w3w3">
+            <div class="flex-none lg:hidden">
+              <label
+                for="my-drawer-3"
+                aria-label="open sidebar"
+                class="btn btn-square btn-ghost"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="inline-block w-6 h-6 stroke-current"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path></svg
+                >
+              </label>
+            </div>
+            <div class="flex-1 px-2 mx-2 text-2xl">
+              <a href="/">Cassie's Writing ⚡️</a>
+            </div>
+            <div class="flex-none hidden lg:block">
+              <ul class="menu menu-horizontal">
+                <NavLinks />
+              </ul>
+            </div>
+          </div>
+          <div class="p-4 prose max-w-none">
+            <div class="flex items-center">
+              <img src={titleIcon} alt="Bushes of Leaves" class="w-12 h-12" />
+              <h1 class="mb-0 ml-4">{category}</h1>
+            </div>
+            <ul
+              class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box w-full menu-md"
+            >
+              {
+                Object.keys(BLOG_CATEGORIES).map((category) => {
+                  if (isBlogCategories(category)) {
+                    return (
+                      <li>
+                        <a
+                          class="leading-[0] text-lg p-4 m-0"
+                          href={
+                            category === "All"
+                              ? "/"
+                              : `/category/${BLOG_CATEGORIES[category]}/1`
+                          }
+                        >
+                          {category}
+                        </a>
+                      </li>
+                    );
+                  }
+                })
+              }
+            </ul>
+          </div>
+          <div class="p-4">
             <slot />
-            <Footer />
-        </main>
-    </body>
+          </div>
+        </div>
+        <div class="drawer-side">
+          <label
+            for="my-drawer-3"
+            aria-label="close sidebar"
+            class="drawer-overlay"></label>
+          <ul class="menu p-4 w-80 min-h-full bg-base-300">
+            <li>
+              <a href="/" class="text-2xl">Cassie's Writing ⚡️</a>
+            </li>
+            <NavLinks />
+          </ul>
+        </div>
+      </div>
+      <Footer />
+    </main>
+  </body>
 </html>
