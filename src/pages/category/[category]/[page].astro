@@ -1,7 +1,7 @@
 ---
 import { getCategories, getPosts } from "../../../utils/post";
 import { MAX_POSTS, CATEGORY_MAP } from "../../../utils/const";
-import type { BLOG_CATEGORIES } from "../../../utils/types";
+import type { BLOG_CATEGORIES, Post } from "../../../utils/types";
 
 import Main from "../../../layouts/Main.astro";
 import Card from "../../../components/Card.astro";
@@ -33,11 +33,13 @@ const category: BLOG_CATEGORIES = params.category;
 <Main title={`Cassie's Blog | ${CATEGORY_MAP[category]}`} category={CATEGORY_MAP[category]}>
   <div class="grid grid-cols-3 gap-8">
     {
-      posts.map(({ data: { title, poster, subtitle } }) => {
+      posts.map((post: { data: Post; slug: string; }) => {
+        const { title, subtitle, poster } = post.data;
+        
         return (
           <Card
             title={title}
-            link="hello"
+            link={`/post/${post.slug}`}
             poster={poster}
             subtitle={subtitle}
           />

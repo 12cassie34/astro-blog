@@ -6,13 +6,13 @@ import defaultImg from "/images/cat.jpg";
 import Main from "./Main.astro";
 
 type Props = MarkdownLayoutProps<{
-  poster?: string;
-  caption?: string;
+  poster: string | undefined;
+  caption: string | undefined;
   title: string;
   subtitle: string;
 }>;
 
-const { poster, title, subtitle, caption } = Astro.props.frontmatter;
+const { title, subtitle, caption, poster = defaultImg } = Astro.props.frontmatter;
 ---
 
 <Main title="Cassie Lin | Blog">
