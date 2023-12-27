@@ -13,7 +13,7 @@ interface Props {
   category?: string;
 }
 
-const { title, category = 'All' } = Astro.props;
+const { title, category = "All" } = Astro.props;
 ---
 
 <html lang="en">
@@ -38,14 +38,14 @@ const { title, category = 'All' } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <main class="max-w-[70%] mx-auto">
+    <main class="w-full lg:max-w-[70%] mx-auto">
       <div class="drawer">
-        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+        <input id="drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
           <div class="w-full navbar w3w3">
             <div class="flex-none lg:hidden">
               <label
-                for="my-drawer-3"
+                for="drawer"
                 aria-label="open sidebar"
                 class="btn btn-square btn-ghost"
               >
@@ -106,11 +106,12 @@ const { title, category = 'All' } = Astro.props;
           </div>
         </div>
         <div class="drawer-side">
-          <label
-            for="my-drawer-3"
-            aria-label="close sidebar"
-            class="drawer-overlay"></label>
           <ul class="menu p-4 w-80 min-h-full bg-base-300">
+            <label
+              for="drawer"
+              aria-label="close sidebar"
+              class="drawer-overlay text-right">✖️</label
+            >
             <li>
               <a href="/" class="text-2xl">Cassie's Writing ⚡️</a>
             </li>
