@@ -23,10 +23,10 @@ While in the process of development, I gained insights into:
 - Crafting CSS, HTML, and Markdown within an Astro application.
 
 ### Screenshot
-![Landing Page - Desktop](https://imgur.com/f4UgkUB)
-![Post Lists - Desktop](https://imgur.com/E94v955)
-![Landing Page - Mobile](https://imgur.com/undefined)
-![Post](https://imgur.com/a/YaEaRBC)
+![Landing Page - Desktop](https://i.imgur.com/zirQcP9.png)
+![Post Lists - Desktop](https://i.imgur.com/xkKdbQs.png)
+![Landing Page - Mobile](https://i.imgur.com/zZkAxlu.png)
+![Post](https://i.imgur.com/bkqSZUj.png)
 
 ## My process
 
@@ -38,5 +38,5 @@ While in the process of development, I gained insights into:
 - Markdown
 
 ## Author
-- Medium - [Cassie，來學]](https://medium.com/@cassiecoding)
+- Medium - [Cassie，來學](https://medium.com/@cassiecoding)
 - LinkedIn - [@SHANYU LIN](https://www.linkedin.com/in/shanyulin)
