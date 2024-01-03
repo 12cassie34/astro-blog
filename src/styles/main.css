@@ -1,3 +1,7 @@
 * {
     font-family: 'Aleo', serif;
 }
+
+code::before, code::after {
+    content: '' !important;
+}
