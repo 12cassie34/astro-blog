@@ -1,9 +1,5 @@
 ---
-import { getCollection } from "astro:content";
-
 import { getPosts } from "../../utils/post";
-
-const posts = getCollection("blogPosts");
 
 export const getStaticPaths = async () => {
     const allPosts = await getPosts();
@@ -19,6 +15,6 @@ export const getStaticPaths = async () => {
 }
 
 const { render } = Astro.props;
-const { Content, } = await render();
+const { Content, headings } = await render();
 ---
-<Content />
+<Content headings={headings} />

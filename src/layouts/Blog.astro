@@ -1,36 +1,100 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
 
+import type { Headings } from "../utils/types";
+import { formatTableOfContents } from "../utils/post";
+
 import defaultImg from "/images/cat.jpg";
 
 import Main from "./Main.astro";
+import TableOfContentsHeadings from "../components/TableOfContentsHeadings.astro";
 
 type Props = MarkdownLayoutProps<{
   poster: string | undefined;
   caption: string | undefined;
   title: string;
   subtitle: string;
-}>;
+}> & {
+  headings: Headings[];
+};
 
-const { title, subtitle, caption, poster = defaultImg } = Astro.props.frontmatter;
+const {
+  title,
+  subtitle,
+  caption,
+  poster = defaultImg,
+} = Astro.props.frontmatter;
+const { headings } = Astro.props;
+
+const tableOfContents = formatTableOfContents(headings);
 ---
 
 <Main title="Cassie Lin | Blog">
-  <div class="prose max-w-[100%]">
-    <figure class="m-0 mb-4">
-      <img
-        src={poster || defaultImg}
-        alt={title}
-        width="100%"
-        height="auto"
-        class="max-w-[100%] rounded-lg"
-      />
-      <figcaption class="text-center">
-        {caption || title}
-      </figcaption>
-    </figure>
-    <h1>{title}</h1>
-    <h2>{subtitle}</h2>
-    <slot />
+  <div class="grid grid-cols-1 md:grid-cols-[20%_auto] gap-10">
+    <aside id="table-of-contents" class="md:block hidden">
+      <div class="sticky top-24 self-start hidden md:flex transition-all duration-200 flex-col gap-1">
+        <h4 class="font-bold mb-2">Table of Contents</h4>
+          {
+            tableOfContents.map((indexContents) => {
+              return <TableOfContentsHeadings heading={indexContents} />;
+            })
+          }
+      </div>
+    </aside>
+    <article class="prose max-w-full w-full article">
+      <figure class="m-0 mb-4">
+        <img
+          src={poster || defaultImg}
+          alt={title}
+          width="100%"
+          height="auto"
+          class="max-w-[100%] rounded-lg"
+        />
+        <figcaption class="text-center">
+          {caption || title}
+        </figcaption>
+      </figure>
+      <h1>{title}</h1>
+      <h3>{subtitle}</h3>
+      <slot />
+    </article>
   </div>
 </Main>
+
+<script>
+  const inactiveBg = "bg-accent";
+  const activeClassess = [
+    "bg-neutral",
+    "text-white",
+    "font-bold",
+    "transition-colors",
+    "duration-200"
+  ];
+
+  const startObserver = () => {
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        const index = document.querySelector(`aside a[href="#${entry.target.id}"]`);
+        if (entry.isIntersecting) {
+          index?.classList.remove(inactiveBg);
+          index?.classList.add(...activeClassess);
+        } else {
+          index?.classList.add(inactiveBg);
+          index?.classList.remove(...activeClassess);
+        }
+      });
+    }
+
+    const headingsInArticle = document.querySelectorAll(
+      "article.article h1, article.article h2, article.article h3, article.article h4, article.article h5, article.article h6"
+    );
+
+    const observer = new IntersectionObserver(handleIntersection);
+
+    headingsInArticle.forEach((heading) => {
+      observer.observe(heading);
+    });
+  };
+  startObserver();
+  document.addEventListener('astro:after-swap', startObserver);
+</script>

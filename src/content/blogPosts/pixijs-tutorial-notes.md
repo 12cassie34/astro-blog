@@ -8,7 +8,7 @@ subtitle: "The beginning of my first PixiJS journey—note down in as much detai
 relatedPosts: []
 pubDate: 170427549000000
 ---
-# ``new`` an ``Application``
+## ``new`` an ``Application``
 - The constructor is `new PIXI.Application`.
 - We can pass some props like `background` and `resizeTo`.
     - If you set `resizeTo` as `window`, the `HTMLCanvasElement` `div` returned by the constructor will expand to the entire window.
@@ -25,13 +25,13 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view);
 ```
 
-# Create a Sprite
+## Create a Sprite
 - Pixi renders a hierarchy of `DisplayObject`. A `sprite` is a kind of `DisplayObject`, it is responsible for wrapping a loaded image. 
     -  Images are loaded asynchronously in Pixi as well. Utilise: `PIXI.Sprite.from("yourImageURL")`
     - We can set the image's anchor. We can use `app.screen.width` and `app.screen.height` to anchor the image.
 - A `stage` is where our animation alive, we can see it as a container. Utilise: `app.stage.addChild(yourLoadedImage)`
 
-# Writing an Update Loop
+## Writing an Update Loop
 - `ticker` is a PIXI object that can execute one or more callback functions each frame. Within these callback functions, we have the ability to move or rotate our sprites.
 - We can simply call `app.ticker.add(...)`.
 

@@ -1,0 +1,23 @@
+---
+import type { HeadingStructure } from "../utils/types";
+import { TABLE_OF_CONTENTS_CLASSES } from "../utils/const";
+
+export interface Props {
+  heading: HeadingStructure;
+};
+
+const { heading } = Astro.props;
+const headingWithType = heading as HeadingStructure;
+const classes = `${TABLE_OF_CONTENTS_CLASSES[headingWithType.depth]} || ''`
+---
+
+<a href=`#${heading.slug}` class={classes}>
+  {heading.text}
+  {
+    heading.subHeadings?.length
+      ? heading.subHeadings.map((subHeading: HeadingStructure) => (
+          <Astro.self heading={subHeading} />
+        ))
+      : ""
+  }
+</a>
