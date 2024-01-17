@@ -6,6 +6,7 @@
   - [What I learned](#what-i-learned)
   - [Screenshot](#screenshot)
 - [My process](#my-process)
+  - [Develop Log](#develop-log)
   - [Built with](#built-with)
 - [Author](#author)
 
@@ -29,6 +30,10 @@ While in the process of development, I gained insights into:
 ![Post](https://i.imgur.com/bkqSZUj.png)
 
 ## My process
+
+### Develop Log
+#### 20240111
+[`Astro.self`](https://docs.astro.build/en/reference/api-reference/#astroself) allows us to render a component recursively
 
 ### Built with
 - [Astro](https://astro.build/) - JS library

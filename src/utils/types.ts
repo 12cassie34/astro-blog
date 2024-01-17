@@ -12,3 +12,15 @@ export interface Post {
     relatedPosts: string[],
     pubDate: number,
 }
+
+export type Depth = 1 | 2 | 3 | 4 | 5 | 6;
+
+export interface Headings {
+    depth: Depth;
+    slug: string;
+    text: string;
+}
+
+export interface HeadingStructure extends Headings {
+    subHeadings: HeadingStructure[];
+}
