@@ -1,0 +1,22 @@
+---
+import { MY_REPOS } from "../utils/const";
+
+import Main from "../layouts/Main.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<Main title="Cassie Lin | Porfolio">
+  <div class="grid grid-rows-1 gap-4">
+    {
+      MY_REPOS.map(({ title, link, description, imgSrc, tags }) => (
+        <Hero
+          title={title}
+          link={link}
+          description={description}
+          imgSrc={imgSrc}
+          tags={tags}
+        />
+      ))
+    }
+  </div>
+</Main>
