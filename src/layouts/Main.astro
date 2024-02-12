@@ -14,6 +14,7 @@ interface Props {
 }
 
 const { title, category = "All" } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <html lang="en">
@@ -71,36 +72,41 @@ const { title, category = "All" } = Astro.props;
               </ul>
             </div>
           </div>
-          <div class="p-4 prose max-w-none">
-            <div class="flex items-center">
-              <img src={titleIcon} alt="Bushes of Leaves" class="w-12 h-12" />
-              <h1 class="mb-0 ml-4">{category}</h1>
-            </div>
-            <ul
-              class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box w-full menu-md"
-            >
-              {
-                Object.keys(BLOG_CATEGORIES).map((category) => {
-                  if (isBlogCategories(category)) {
-                    return (
-                      <li>
-                        <a
-                          class="leading-[0] text-lg p-4 m-0"
-                          href={
-                            category === "All"
-                              ? "/"
-                              : `/category/${BLOG_CATEGORIES[category]}/1`
-                          }
-                        >
-                          {category}
-                        </a>
-                      </li>
-                    );
-                  }
-                })
-              }
-            </ul>
-          </div>
+          {
+            currentPath === "/" && (
+              <div class="p-4 prose max-w-none">
+                <div class="flex items-center">
+                  <img
+                    src={titleIcon}
+                    alt="Bushes of Leaves"
+                    class="w-12 h-12"
+                  />
+                  <h1 class="mb-0 ml-4">{category}</h1>
+                </div>
+                <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box w-full menu-md">
+                  {Object.keys(BLOG_CATEGORIES).map((category) => {
+                    if (isBlogCategories(category)) {
+                      return (
+                        <li>
+                          <a
+                            class="leading-[0] text-lg p-4 m-0"
+                            href={
+                              category === "All"
+                                ? "/"
+                                : `/category/${BLOG_CATEGORIES[category]}/1`
+                            }
+                          >
+                            {category}
+                          </a>
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </div>
+            )
+          }
+
           <div class="p-4">
             <slot />
           </div>
