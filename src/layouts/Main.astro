@@ -73,7 +73,7 @@ const currentPath = Astro.url.pathname;
             </div>
           </div>
           {
-            currentPath === "/" && (
+            (currentPath === "/" || currentPath.includes("/category/")) && (
               <div class="p-4 prose max-w-none">
                 <div class="flex items-center">
                   <img
