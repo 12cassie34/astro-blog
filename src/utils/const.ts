@@ -4,6 +4,7 @@ export const MAX_POSTS = 5;
 
 export const CATEGORY_MAP: Record<BLOG_CATEGORIES, string> = {
     "all": "All",
+    "blog-post": "Blog Post",
     "learning-diary": "Learning Diary"
 }
 
