@@ -2,6 +2,21 @@
     font-family: 'Aleo', serif;
 }
 
+code {
+    background-color: rgba(181,167,186,.2);
+}
+
 code::before, code::after {
     content: '' !important;
+}
+
+p, li {
+    font-size: 1.1rem;
+}
+
+strong {
+    text-decoration: underline;
+    text-decoration-color: aquamarine;
+    text-decoration-thickness: .3rem;
+    text-decoration-skip-ink: none;
 }
