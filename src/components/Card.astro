@@ -1,12 +1,15 @@
 ---
+import { formatTimestamp } from '../utils/post'
+
 export type Props = {
   title: string;
+  pubDate: number;
   link: string;
   subtitle: string | undefined;
   poster: string | undefined;
 };
 
-const { title, link, subtitle, poster } = Astro.props;
+const { title, pubDate, link, subtitle, poster } = Astro.props;
 ---
 
 <a href={link}>
@@ -15,6 +18,7 @@ const { title, link, subtitle, poster } = Astro.props;
       <img src={poster} alt={title} />
     </figure>
     <div class="card-body">
+      <small>{formatTimestamp(pubDate)}</small>
       <h2 class="card-title">{title}</h2>
       {subtitle && <p>{subtitle}</p>}
       <div class="card-actions justify-end">

@@ -2,7 +2,7 @@
 import type { MarkdownLayoutProps } from "astro";
 
 import type { Headings } from "../utils/types";
-import { formatTableOfContents } from "../utils/post";
+import { formatTableOfContents, formatTimestamp } from "../utils/post";
 
 import defaultImg from "/images/cat.jpg";
 
@@ -13,6 +13,7 @@ type Props = MarkdownLayoutProps<{
   poster: string | undefined;
   caption: string | undefined;
   title: string;
+  pubDate: number;
   subtitle: string;
 }> & {
   headings: Headings[];
@@ -20,6 +21,7 @@ type Props = MarkdownLayoutProps<{
 
 const {
   title,
+  pubDate,
   subtitle,
   caption,
   poster = defaultImg,
@@ -54,6 +56,7 @@ const tableOfContents = formatTableOfContents(headings);
           {caption || title}
         </figcaption>
       </figure>
+      <small>{formatTimestamp(pubDate)}</small>
       <h1>{title}</h1>
       <h3>{subtitle}</h3>
       <slot />

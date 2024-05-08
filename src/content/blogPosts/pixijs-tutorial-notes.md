@@ -6,7 +6,7 @@ poster: "/images/pixijs-banner.png"
 title: "PixiJS Tutorial Notes"
 subtitle: "The beginning of my first PixiJS journey—note down in as much detail as possible what I have observed."
 relatedPosts: []
-pubDate: 170427549000000
+pubDate: 1704275490000
 ---
 ## ``new`` an ``Application``
 - The constructor is `new PIXI.Application`.

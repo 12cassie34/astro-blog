@@ -6,7 +6,7 @@ poster: "https://cdn.pixabay.com/photo/2015/11/13/19/07/alternative-energy-10424
 title: "Socket.Io Note"
 subtitle: "This story is about why we need WebSocket and the basic features of Socket.IO."
 relatedPosts: []
-pubDate: 171507716100000
+pubDate: 1715077161000
 ---
 # Why Do We Need WebSocket?
 To answer this question, we should first discuss the characteristics of the RESTful API.

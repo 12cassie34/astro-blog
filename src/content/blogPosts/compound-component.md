@@ -6,7 +6,7 @@ poster: "https://cdn.pixabay.com/photo/2017/05/10/07/49/macro-2300109_1280.jpg"
 title: "React Design Pattern: Compound Component"
 subtitle: "Similar to the compound eyes of insects, we divide a large component into smaller, more manageable pieces, each with its own specific mission."
 relatedPosts: []
-pubDate: 170782053930500
+pubDate: 1707820539305
 ---
 To ensure code readability and avoid increasing code complexity, we always structure our code following various design patterns. While these design patterns may have fancy names, if you look closely, you might find yourself using these patterns in your daily works.
 

@@ -18,6 +18,7 @@ const allPosts = await getPosts(MAX_POSTS);
         <div class="col-span-2">
           <Card
             title={allPosts[0].data.title}
+            pubDate={allPosts[0].data.pubDate}
             link={`/post/${allPosts[0].slug}`}
             poster={allPosts[0].data.poster}
             subtitle={allPosts[0].data.subtitle}
@@ -30,6 +31,7 @@ const allPosts = await getPosts(MAX_POSTS);
         <div class="col-span-2">
           <Card
             title={allPosts[1].data.title}
+            pubDate={allPosts[1].data.pubDate}
             link={`/post/${allPosts[1].slug}`}
             poster={allPosts[1].data.poster}
             subtitle={allPosts[1].data.subtitle}
@@ -41,10 +43,11 @@ const allPosts = await getPosts(MAX_POSTS);
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8">
     {
       allPosts.length > 3 &&
-        allPosts.slice(2).map(({ data: { title, poster, subtitle }, slug }) => {
+        allPosts.slice(2).map(({ data: { title, poster, subtitle, pubDate }, slug }) => {
           return (
             <Card
               title={title}
+              pubDate={pubDate}
               link={`/post/${slug}`}
               poster={poster}
               subtitle={subtitle}
