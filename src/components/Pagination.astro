@@ -1,0 +1,26 @@
+---
+export type Props = {
+  currentPage: number;
+  totalPage: number;
+  rootPath: string;
+};
+
+const { currentPage, totalPage, rootPath } = Astro.props;
+---
+
+<div class="join">
+  {
+    Array.from({ length: totalPage }, (_, i) => {
+      const pageNumber = i + 1;
+      return (
+        <a href={`${rootPath}/${pageNumber}`}>
+          <button
+            class={`join-item btn ${pageNumber === currentPage ? "btn-active" : ""}`}
+          >
+            {pageNumber}
+          </button>
+        </a>
+      );
+    })
+  }
+</div>
