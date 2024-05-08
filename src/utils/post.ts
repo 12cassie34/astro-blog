@@ -37,3 +37,8 @@ export const formatTableOfContents = (headings: Headings[]) => {
 
   return formattedTable;
 };
+
+export const formatTimestamp = (timestamp: number) => {
+  const dateFormat = new Date(timestamp)
+  return dateFormat.toLocaleDateString('en-GB')
+}
