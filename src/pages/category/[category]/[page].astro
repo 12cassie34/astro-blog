@@ -5,6 +5,7 @@ import type { BLOG_CATEGORIES, Post } from "../../../utils/types";
 
 import Main from "../../../layouts/Main.astro";
 import Card from "../../../components/Card.astro";
+import Pagination from "../../../components/Pagination.astro";
 
 export const getStaticPaths = async ({ paginate }) => {
   const categories = await getCategories();
@@ -22,7 +23,7 @@ export const getStaticPaths = async ({ paginate }) => {
       pageSize: MAX_POSTS,
     });
   });
-}
+};
 const params = Astro.params;
 const { page } = Astro.props;
 
@@ -30,12 +31,15 @@ const posts = page.data;
 const category: BLOG_CATEGORIES = params.category;
 ---
 
-<Main title={`Cassie's Blog | ${CATEGORY_MAP[category]}`} category={CATEGORY_MAP[category]}>
+<Main
+  title={`Cassie's Blog | ${CATEGORY_MAP[category]}`}
+  category={CATEGORY_MAP[category]}
+>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     {
-      posts.map((post: { data: Post; slug: string; }) => {
+      posts.map((post: { data: Post; slug: string }) => {
         const { title, subtitle, poster } = post.data;
-        
+
         return (
           <Card
             title={title}
@@ -46,5 +50,12 @@ const category: BLOG_CATEGORIES = params.category;
         );
       })
     }
+  </div>
+  <div class="mt-4 flex justify-center">
+    <Pagination
+      currentPage={page.currentPage}
+      totalPage={page.lastPage}
+      rootPath={`/category/${category}`}
+    />
   </div>
 </Main>
