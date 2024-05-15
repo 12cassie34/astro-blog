@@ -1,6 +1,7 @@
 export enum BLOG_CATEGORIES {
     "All" = "all",
     "Blog Post" = "blog-post",
+    "Notes" = "notes",
     "Learning Diary" = "learning-diary"
 };
 
